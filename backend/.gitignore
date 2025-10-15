@@ -1,0 +1,17 @@
+# Bỏ qua node_modules
+node_modules/
+
+# Bỏ file build
+dist/
+
+# Bỏ file môi trường
+.env
+
+# Bỏ logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# VSCode settings
+.vscode/
