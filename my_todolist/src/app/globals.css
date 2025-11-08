@@ -10,6 +10,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-mbs: 320px;
+  --breakpoint-mbm: 375px;
+  --breakpoint-mbl: 425px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +32,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 /* Scrollbar Custom */
 ::-webkit-scrollbar {
   width: 8px;
@@ -41,6 +50,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #4f46e5, #7c3aed);
 }
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -50,7 +60,48 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px #1f2937 inset !important; /* bg-gray-800 */
-  -webkit-text-fill-color: #fff !important; /* chữ trắng */
+  -webkit-box-shadow: 0 0 0px 1000px #1f2937 inset !important;
+  /* bg-gray-800 */
+  -webkit-text-fill-color: #fff !important;
+  /* chữ trắng */
   transition: background-color 5000s ease-in-out 0s !important;
 }
+
+/* Chỉ áp dụng mobile <= 425px */
+/* @media (max-width: 426px) {
+  .react-datepicker {
+    width: 28rem;
+    font-size: 0.75rem;
+    transform: scale(0.85);
+    transform-origin: top center;
+  }
+
+  .react-datepicker-popper {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .react-datepicker__header {
+    padding: 0.25rem;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 0.8rem;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day {
+    width: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 0.7rem;
+  }
+
+  .react-datepicker__time-container {
+    width: 5rem;
+  }
+
+  .react-datepicker__triangle {
+    display: none;
+
+  }
+} */

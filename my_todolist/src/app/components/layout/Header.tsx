@@ -5,16 +5,16 @@ export const Header = () => {
   const { user } = useUser(); // user chứa username
 
   return (
-    <div className="flex items-center justify-end gap-2 px-4 py-2">
+    <div className="flex items-center justify-end gap-2">
       {/* Nút search */}
-      <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
+      {/* <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
         <Search size={18} className="text-white" />
-      </button>
+      </button> */}
 
       {/* Nút thông báo */}
-      <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition mx-1">
+      {/* <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition mx-1">
         <Bell size={18} className="text-white" />
-      </button>
+      </button> */}
 
       {/* Avatar + Lời chào */}
       <div className="flex items-center gap-3 ml-2">

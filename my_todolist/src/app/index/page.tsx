@@ -73,7 +73,7 @@ export default function HomePage() {
               </h2>
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium shadow-lg hover:scale-105 transition-all duration-200"
+                className="flex items-center cursor-pointer gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium shadow-lg hover:scale-105 transition-all duration-200"
               >
                 <PlusCircle size={20} />
                 <span className="hidden inline">Thêm công việc</span>
@@ -85,7 +85,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
               {/* Task List */}
               <section className="xl:col-span-3">
-                <div className="space-y-4 max-h-[calc(100vh-20rem)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/20">
+                <div className="space-y-4 max-h-[calc(100vh-15rem)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/20">
                   {loading ? (
                     <div className="text-center text-white py-12">Đang tải...</div>
                   ) : error ? (
@@ -96,7 +96,7 @@ export default function HomePage() {
                       <p>Bắt đầu ngày mới hiệu quả!</p>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                       {tasks.map((task) => (
                         <TaskCard
                           key={task._id}

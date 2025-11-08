@@ -116,7 +116,7 @@ export const AddTaskModal = ({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative w-full max-w-4xl bg-gradient-to-br from-[#1C2341]/95 to-[#0F1324]/95 rounded-2xl shadow-2xl p-8 border border-white/20 text-white backdrop-blur-xl overflow-hidden"
+              className="relative w-full max-w-4xl bg-gradient-to-br from-[#1C2341]/95 to-[#0F1324]/95 rounded-2xl shadow-2xl p-8 border border-white/20 text-white backdrop-blur-xl sm:overflow-hidden sm:max-h-none mbs:overflow-auto mbs:max-h-[90vh]"
             >
               {/* Decorative elements */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -126,7 +126,7 @@ export const AddTaskModal = ({
 
               <ModalHeader onClose={onClose} />
               <form onSubmit={handleSubmit} className="relative">
-                <div className="grid grid-cols-2 gap-6">
+                <div className="sm:grid sm:grid-cols-2 sm:gap-6">
                   {/* Left column: Title, Description */}
                   <div className="space-y-6">
                     {/* Title */}
@@ -161,7 +161,7 @@ export const AddTaskModal = ({
                         <textarea
                           value={description}
                           onChange={(e) => setDescription(e.target.value)}
-                          className="relative z-10 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/60 transition-all duration-200 min-h-[146px] resize-none"
+                          className="relative z-10 w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500/60 transition-all duration-200 sm:min-h-[146px] resize-none"
                           placeholder="Thêm một vài mô tả về công việc của bạn"
                         />
                       </div>
@@ -169,7 +169,7 @@ export const AddTaskModal = ({
                   </div>
 
                   {/* Right column: Start, End, Priority (dọc) */}
-                  <div className="space-y-6">
+                  <div className="space-y-6 mbl:mt-5 sm:mt-0">
                     <div className="flex flex-col gap-6">
                       {/* Start Time */}
                       <div>
@@ -222,7 +222,7 @@ export const AddTaskModal = ({
                     animate={{ opacity: 1, y: 0 }}
                     className="mt-4 p-3 rounded-xl bg-white/5 border border-white/10"
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="sm:flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Calendar size={14} className="text-purple-400" />
                         <span className="text-sm text-purple-200">
@@ -231,7 +231,7 @@ export const AddTaskModal = ({
                             month: "long",
                             day: "numeric",
                           })}{" "}
-                          —{" "}
+                          -{" "}
                           {end.toLocaleDateString(undefined, {
                             weekday: "long",
                             month: "long",
@@ -239,14 +239,14 @@ export const AddTaskModal = ({
                           })}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="mbl:mt-3 sm:mt-0 flex items-center gap-2">
                         <Clock size={14} className="text-blue-400" />
                         <span className="text-sm text-blue-200">
                           {start.toLocaleTimeString(undefined, {
                             hour: "2-digit",
                             minute: "2-digit",
                           })}{" "}
-                          —{" "}
+                          -{" "}
                           {end.toLocaleTimeString(undefined, {
                             hour: "2-digit",
                             minute: "2-digit",

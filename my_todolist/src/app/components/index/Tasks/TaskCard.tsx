@@ -158,17 +158,17 @@ export const TaskCard = ({
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-gray-400">
+        <div className="flex items-center gap-3 text-gray-400">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="hover:text-blue-400 transition"
+            className="hover:text-blue-400 transition cursor-pointer"
           >
             <Pencil size={16} />
           </button>
           <button
             onClick={() => setConfirmOpen(true)}
             disabled={isDeleting}
-            className="hover:text-red-400 transition"
+            className="hover:text-red-400 transition cursor-pointer"
           >
             <Trash2 size={16} />
           </button>
