@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock } from "lucide-react";
@@ -10,7 +12,6 @@ import "../../../styles/datetime-picker.css";
 import { SubTask, TaskPayload } from "@/types/task";
 import { ModalBase } from "../../common/ModalBase";
 import toast from "react-hot-toast";
-
 
 interface AddTaskModalProps {
   isOpen: boolean;
@@ -27,14 +28,13 @@ export const AddTaskModal = ({
   const [start, setStart] = useState<Date | null>(new Date());
   const [end, setEnd] = useState<Date | null>(
     new Date(Date.now() + 60 * 60 * 1000)
-  ); // default +1h
+  );
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState<"low" | "medium" | "high">("medium");
   const [openPriority, setOpenPriority] = useState(false);
   const [subtasks, setSubtasks] = useState<SubTask[]>([]);
   const [newSubtask, setNewSubtask] = useState("");
 
-  // Memoized handlers
   const handleAddSubtask = useCallback(() => {
     if (!newSubtask.trim()) return;
     setSubtasks((prev) => [
@@ -60,17 +60,18 @@ export const AddTaskModal = ({
     (e: React.FormEvent) => {
       e.preventDefault();
       if (!title.trim()) {
-        alert("Please enter a task title");
+        alert("Vui lòng nhập tiêu đề công việc!");
         return;
       }
       if (!start || !end) {
-        alert("Please select start and end times");
+        alert("Vui lòng chọn thời gian bắt đầu và kết thúc!");
         return;
       }
       if (end <= start) {
-        alert("End time must be after start time");
+        alert("Thời gian kết thúc phải sau thời gian bắt đầu!");
         return;
       }
+
       onAddTask({
         title,
         description,
@@ -81,7 +82,7 @@ export const AddTaskModal = ({
       });
 
       toast.success("🎉 Đã thêm công việc thành công!", {
-        duration: 5000, // 5 giây
+        duration: 3000,
       });
 
       setTitle("");
@@ -100,36 +101,32 @@ export const AddTaskModal = ({
     <AnimatePresence>
       {isOpen && (
         <ModalBase isOpen={isOpen} onClose={onClose}>
-
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             {/* Overlay */}
             <motion.div
-              className="absolute inset-0 bg-black/70 backdrop-blur-lg"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={onClose}
             />
+
             {/* Modal */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="relative w-full max-w-4xl bg-gradient-to-br from-[#1C2341]/95 to-[#0F1324]/95 rounded-2xl shadow-2xl p-8 border border-white/20 text-white backdrop-blur-xl sm:overflow-hidden sm:max-h-none mbs:overflow-auto mbs:max-h-[90vh]"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              className="relative w-full max-w-4xl rounded-2xl border border-white/10 text-white shadow-lg shadow-black/30 p-8
+              bg-gradient-to-b from-[#151a2f] to-[#0f1324] backdrop-blur-md
+              sm:overflow-hidden sm:max-h-none mbs:overflow-auto mbs:max-h-[90vh]"
             >
-              {/* Decorative elements */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-tr from-pink-500/20 to-cyan-500/20 blur-3xl" />
-              </div>
-
               <ModalHeader onClose={onClose} />
+
               <form onSubmit={handleSubmit} className="relative">
                 <div className="sm:grid sm:grid-cols-2 sm:gap-6">
                   {/* Left column: Title, Description */}
                   <div className="space-y-6">
-                    {/* Title */}
                     <div>
                       <label className="block text-sm text-gray-400 mb-2 ml-1">
                         Tiêu đề công việc
@@ -148,15 +145,11 @@ export const AddTaskModal = ({
                       />
                     </div>
 
-                    {/* Description */}
                     <div className="group">
                       <label className="block text-sm text-gray-400 mb-2 ml-1">
-                        {" "}
-                        Mô tả{" "}
+                        Mô tả
                       </label>
                       <div className="relative">
-                        {" "}
-                        {/* overlay */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/10 to-purple-500/10 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 opacity-90 z-0" />
                         <textarea
                           value={description}
@@ -168,45 +161,34 @@ export const AddTaskModal = ({
                     </div>
                   </div>
 
-                  {/* Right column: Start, End, Priority (dọc) */}
+                  {/* Right column: Start, End, Priority */}
                   <div className="space-y-6 mbl:mt-5 sm:mt-0">
                     <div className="flex flex-col gap-6">
-                      {/* Start Time */}
-                      <div>
-                        <div className="relative w-full">
-                          <DateTimeInput
-                            label="Thời gian bắt đầu"
-                            value={start}
-                            onChange={setStart}
-                            minDate={new Date()}
-                            gradient="bg-gradient-to-r from-blue-500/10 to-purple-500/10"
-                          />
-                        </div>
-                      </div>
-                      {/* End Time */}
-                      <div>
-                        <div className="relative w-full">
-                          <DateTimeInput
-                            label="Thời gian kết thúc"
-                            value={end}
-                            onChange={setEnd}
-                            minDate={start || new Date()}
-                            gradient="bg-gradient-to-r from-pink-500/10 to-cyan-500/10"
-                          />
-                        </div>
-                      </div>
-                      {/* Priority */}
-                      <div className="relative w-full">
-                        <PriorityDropdown
-                          priority={priority}
-                          setPriority={setPriority}
-                          open={openPriority}
-                          setOpen={setOpenPriority}
-                        />
-                      </div>
+                      <DateTimeInput
+                        label="Thời gian bắt đầu"
+                        value={start}
+                        onChange={setStart}
+                        minDate={new Date()}
+                        gradient="bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+                      />
+                      <DateTimeInput
+                        label="Thời gian kết thúc"
+                        value={end}
+                        onChange={setEnd}
+                        minDate={start || new Date()}
+                        gradient="bg-gradient-to-r from-pink-500/10 to-cyan-500/10"
+                      />
+                      <PriorityDropdown
+                        priority={priority}
+                        setPriority={setPriority}
+                        open={openPriority}
+                        setOpen={setOpenPriority}
+                      />
                     </div>
                   </div>
                 </div>
+
+                {/* Subtask section */}
                 <SubtaskList
                   subtasks={subtasks}
                   newSubtask={newSubtask}
@@ -215,7 +197,8 @@ export const AddTaskModal = ({
                   handleDeleteSubtask={handleDeleteSubtask}
                   toggleSubtask={toggleSubtask}
                 />
-                {/* Date/Time preview */}
+
+                {/* Preview time */}
                 {start && end && (
                   <motion.div
                     initial={{ opacity: 0, y: -6 }}

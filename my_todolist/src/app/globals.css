@@ -67,12 +67,94 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
-/* Chỉ áp dụng mobile <= 425px */
-/* @media (max-width: 426px) {
+/* ===================== */
+/* 🕓 DatePicker Styling + Responsive */
+/* ===================== */
+
+/* ====== Mặc định (desktop) ====== */
+.react-datepicker {
+  font-size: 14px;
+  border-radius: 12px;
+  background-color: #1f1f2b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+}
+
+/* Header */
+.react-datepicker__header {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0 !important;
+  text-align: center !important;
+}
+
+/* Tháng + Năm */
+.react-datepicker__current-month {
+  width: 100%;
+  text-align: center !important;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 !important;
+}
+
+/* Nút chuyển tháng */
+.react-datepicker__navigation {
+  top: 6px !important;
+  line-height: 1 !important;
+}
+
+/* Lịch ngày */
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  width: 2rem !important;
+  line-height: 2rem !important;
+  margin: 2px !important;
+  color: #e0e0e0 !important;
+}
+.react-datepicker__day-names {
+  text-align: center;
+}
+/* Ngày được chọn */
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #a855f7 !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+/* Cột time bên phải */
+/* .react-datepicker__time-container {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-left: 0 !important;
+  background-color: #1f1f2b !important;
+} */
+
+.react-datepicker__time-box {
+  font-size: 13px !important;
+  color: #e0e0e0 !important;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #a855f7 !important;
+  color: white !important;
+}
+
+/* Ẩn mũi tên popup */
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+/* ====== Mobile (≤ 425px) ====== */
+@media (max-width: 426px) {
   .react-datepicker {
-    width: 28rem;
-    font-size: 0.75rem;
-    transform: scale(0.85);
+    width: 90vw !important;
+    font-size: 12px !important;
+    transform: scale(0.9);
     transform-origin: top center;
   }
 
@@ -82,26 +164,48 @@ select:-webkit-autofill:focus {
   }
 
   .react-datepicker__header {
-    padding: 0.25rem;
+    padding: 4px 0 !important;
   }
 
   .react-datepicker__current-month {
-    font-size: 0.8rem;
+    font-size: 13px !important;
+    text-align: center !important;
   }
 
   .react-datepicker__day-name,
-  .react-datepicker__day {
-    width: 1.5rem;
-    line-height: 1.5rem;
-    font-size: 0.7rem;
+  .react-datepicker__day,
+  .react-datepicker__time-name {
+    /* width: 1.7rem !important; */
+    line-height: 1.7rem !important;
+    /* margin: 1px !important; */
+    font-size: 11px !important;
+  }
+
+  .react-datepicker__navigation {
+    top: 4px !important;
+    line-height: 1 !important;
   }
 
   .react-datepicker__time-container {
-    width: 5rem;
+    width: 80px !important;
+  }
+
+  .react-datepicker__time-box {
+    font-size: 11px !important;
   }
 
   .react-datepicker__triangle {
-    display: none;
-
+    display: none !important;
   }
-} */
+}
+
+/* Fix DatePicker không full width */
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block !important;
+  width: 100% !important;
+}
+
+.react-datepicker__input-container input {
+  width: 100% !important;
+}
