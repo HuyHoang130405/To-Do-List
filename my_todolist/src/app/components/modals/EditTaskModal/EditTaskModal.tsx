@@ -94,7 +94,7 @@ export const EditTaskModal = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="relative w-full max-w-4xl rounded-2xl border border-white/10 text-white shadow-lg shadow-black/30 p-8
+              className="relative w-full max-w-4xl rounded-2xl border border-white/10 text-white shadow-lg shadow-black/30 mbl:p-8 mbm:p-6 mbs:p-3
                 bg-gradient-to-b from-[#151a2f] to-[#0f1324] backdrop-blur-md
                 sm:overflow-hidden sm:max-h-none mbs:overflow-auto mbs:max-h-[90vh]"
             >
@@ -135,7 +135,7 @@ export const EditTaskModal = ({
                   </div>
 
                   {/* Right column */}
-                  <div className="space-y-6 mbl:mt-5 sm:mt-0">
+                  <div className="space-y-6 mbs:mt-5 sm:mt-0">
                     <div className="flex flex-col gap-6">
                       <DateTimeInput
                         label="Thời gian bắt đầu"
@@ -185,7 +185,7 @@ export const EditTaskModal = ({
                           {end.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}
                         </span>
                       </div>
-                      <div className="mbl:mt-3 sm:mt-0 flex items-center gap-2">
+                      <div className="mbs:mt-3 sm:mt-0 flex items-center gap-2">
                         <Clock size={14} className="text-blue-400" />
                         <span className="text-sm text-blue-200">
                           {start.toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" })} —{" "}

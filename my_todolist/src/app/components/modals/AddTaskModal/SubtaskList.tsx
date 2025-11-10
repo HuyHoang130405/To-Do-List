@@ -20,7 +20,7 @@ export const SubtaskList = React.memo(function SubtaskList({
     return (
         <div>
             <label className="block text-sm text-gray-400 mt-5 mb-2 ml-1">Nhiệm vụ phụ</label>
-            <div className="flex gap-2">
+            <div className="mbm:flex mbm:gap-2">
                 <input
                     type="text"
                     value={newSubtask}
@@ -31,13 +31,13 @@ export const SubtaskList = React.memo(function SubtaskList({
                             handleAddSubtask();
                         }
                     }}
-                    className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/60 transition-all duration-200"
+                    className="mbm:w-auto mbs:w-full flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/60 transition-all duration-200"
                     placeholder="Thêm một nhiệm vụ phụ"
                 />
                 <button
                     type="button"
                     onClick={handleAddSubtask}
-                    className="px-4 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 transition-all flex items-center justify-center"
+                    className="mbm:px-4 mbm:mt-0 mbm:w-auto mbs:w-full mbs:mt-3 mbs:py-3 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 transition-all flex items-center justify-center"
                 >
                     <Plus size={18} />
                 </button>

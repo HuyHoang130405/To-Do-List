@@ -117,7 +117,7 @@ export const AddTaskModal = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}
               transition={{ duration: 0.15, ease: "easeOut" }}
-              className="relative w-full max-w-4xl rounded-2xl border border-white/10 text-white shadow-lg shadow-black/30 p-8
+              className="relative w-full max-w-4xl rounded-2xl border border-white/10 text-white shadow-lg shadow-black/30 mbl:p-8 mbm:p-6 mbs:p-3
               bg-gradient-to-b from-[#151a2f] to-[#0f1324] backdrop-blur-md
               sm:overflow-hidden sm:max-h-none mbs:overflow-auto mbs:max-h-[90vh]"
             >
