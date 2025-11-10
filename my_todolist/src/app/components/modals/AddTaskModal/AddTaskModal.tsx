@@ -162,7 +162,7 @@ export const AddTaskModal = ({
                   </div>
 
                   {/* Right column: Start, End, Priority */}
-                  <div className="space-y-6 mbl:mt-5 sm:mt-0">
+                  <div className="space-y-6 mbs:mt-5 sm:mt-0">
                     <div className="flex flex-col gap-6">
                       <DateTimeInput
                         label="Thời gian bắt đầu"
@@ -222,7 +222,7 @@ export const AddTaskModal = ({
                           })}
                         </span>
                       </div>
-                      <div className="mbl:mt-3 sm:mt-0 flex items-center gap-2">
+                      <div className="mbs:mt-3 sm:mt-0 flex items-center gap-2">
                         <Clock size={14} className="text-blue-400" />
                         <span className="text-sm text-blue-200">
                           {start.toLocaleTimeString(undefined, {

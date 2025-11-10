@@ -4,8 +4,8 @@ import React from "react";
 export const ModalHeader = React.memo(function ModalHeader({ onClose }: { onClose: () => void }) {
     return (
         <div className="relative flex justify-between items-center mb-8">
-            <h3 className="mbs:text-[22px] sm:text-2xl font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent flex items-center gap-2">
-                <span className="text-2xl">✨</span> Thêm công việc mới
+            <h3 className="mbs:text-[20px] sm:text-2xl font-semibold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent flex items-center gap-2">
+                Thêm công việc mới
             </h3>
             <button
                 onClick={onClose}
