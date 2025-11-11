@@ -33,14 +33,14 @@ export default function HomePage() {
           className="flex flex-col items-center"
         >
           <h1
-            className="font-lora text-5xl md:text-7xl font-extrabold
+            className="font-lora text-5xl lg:text-7xl font-extrabold
              bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent
              leading-[1.05] md:leading-[1.12] pb-1 drop-shadow-xl"
           >
             Quản lý công việc <span className="text-yellow-300">đỉnh cao</span>
           </h1>
           <motion.p
-            className="mt-8 max-w-2xl text-xl text-gray-200 font-medium"
+            className="mt-8 max-w-2xl lg:text-xl md:text-[18px] text-gray-200 font-medium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
