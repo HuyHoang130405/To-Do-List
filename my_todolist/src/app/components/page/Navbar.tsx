@@ -1,8 +1,27 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="flex items-center justify-between px-8 py-5 bg-transparent fixed top-0 left-0 w-full z-50">
+    <nav
+      className={`flex items-center justify-between px-8 py-5 fixed top-0 left-0 w-full z-50 transition-all duration-500 backdrop-blur-md ${scrolled ? "bg-slate-900/70 shadow-lg" : "bg-transparent"
+        }`}
+    >
       <Link href="/" className="mbs:text-[20px] sm:text-3xl font-extrabold tracking-tight drop-shadow-lg">
         <span className="animate-pulse bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
           ToDoList
