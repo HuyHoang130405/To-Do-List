@@ -18,7 +18,7 @@ export default function FeatureCard({
       whileHover={{ scale: 1.07, rotate: 1 }}
     >
       <div className="mb-6 flex justify-center">{icon}</div>
-      <h3 className="text-2xl font-bold mb-3 text-cyan-300 drop-shadow">{title}</h3>
+      <h3 className="mbs:text-xl sm:text-2xl font-bold mb-3 text-cyan-300 drop-shadow">{title}</h3>
       <p className="text-gray-300 text-base">{desc}</p>
     </motion.div>
   );

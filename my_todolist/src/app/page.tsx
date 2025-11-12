@@ -22,7 +22,7 @@ export default function HomePage() {
         <Link href="/index" className="cursor-pointer mb-5 inline-flex 
         items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r 
         from-indigo-500/80 to-cyan-400/80 text-white font-semibold 
-        shadow-lg text-lg animate-bounce">
+        shadow-lg sm:text-lg animate-bounce">
           <Sparkles className="w-6 h-6 animate-spin-slow text-yellow-300" />
           Quản lý công việc ngay <MoveRight></MoveRight>
         </Link>
@@ -33,7 +33,7 @@ export default function HomePage() {
           className="flex flex-col items-center"
         >
           <h1
-            className="font-lora text-5xl lg:text-7xl font-extrabold
+            className="font-lora mbs:text-[28px] sm:text-5xl lg:text-7xl font-extrabold
              bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent
              leading-[1.05] md:leading-[1.12] pb-1 drop-shadow-xl"
           >
@@ -53,22 +53,22 @@ export default function HomePage() {
 
       {/* Features Section */}
       <section className="px-6 py-24 bg-slate-800/40 backdrop-blur-md relative z-10">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-lg">
+        <h2 className="mbs:text-[28px] sm:text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-lg">
           Tại sao chọn <span className="text-yellow-300">ToDoList?</span>
         </h2>
         <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           <FeatureCard
-            icon={<CheckCircle className="w-14 h-14 text-cyan-400 drop-shadow-xl" />}
+            icon={<CheckCircle className="mbs:w-10 mbs:h-10 sm:w-14 sm:h-14 text-cyan-400 drop-shadow-xl" />}
             title="Hoàn thành mục tiêu"
             desc="Quản lý công việc khoa học, đạt nhiều thành tựu mỗi ngày. Theo dõi tiến độ, nhận thông báo nhắc nhở thông minh."
           />
           <FeatureCard
-            icon={<Clock className="w-14 h-14 text-indigo-400 drop-shadow-xl" />}
+            icon={<Clock className="mbs:w-10 mbs:h-10 sm:w-14 sm:h-14 text-indigo-400 drop-shadow-xl" />}
             title="Tiết kiệm thời gian"
             desc="Lập kế hoạch thông minh, giảm stress, tận hưởng sự chủ động. Giao diện tối ưu cho mọi thiết bị."
           />
           <FeatureCard
-            icon={<Users className="w-14 h-14 text-yellow-300 drop-shadow-xl" />}
+            icon={<Users className="mbs:w-10 mbs:h-10 sm:w-14 sm:h-14 text-yellow-300 drop-shadow-xl" />}
             title="Chia sẻ & hợp tác"
             desc="Kết nối nhóm, phân công nhiệm vụ dễ dàng – cùng nhau đạt mục tiêu. Hỗ trợ realtime và chat nhóm."
           />
