@@ -98,7 +98,7 @@ export default function LoginPage() {
           />
           <button
             type="submit"
-            className="w-full rounded-lg bg-white py-3 font-semibold text-black hover:bg-gray-100 transition"
+            className="cursor-pointer w-full rounded-lg bg-white py-3 font-semibold text-black hover:bg-gray-100 transition"
           >
             Sign in
           </button>
@@ -113,7 +113,7 @@ export default function LoginPage() {
 
         {/* Google login */}
         <div className="text-center">
-          <button className="w-full flex items-center justify-center gap-2 rounded-lg bg-gray-800/80 py-3 text-gray-200 font-semibold hover:bg-gray-700 transition">
+          <button className="cursor-pointer w-full flex items-center justify-center gap-2 rounded-lg bg-gray-800/80 py-3 text-gray-200 font-semibold hover:bg-gray-700 transition">
             <LogIn size={18} />
             Sign in with Google
           </button>

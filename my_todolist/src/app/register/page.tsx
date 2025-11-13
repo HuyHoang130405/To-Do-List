@@ -96,7 +96,7 @@ export default function RegisterPage() {
           />
           <button
             type="submit"
-            className="w-full rounded-lg bg-white py-3 font-semibold text-black hover:bg-gray-100 transition"
+            className="cursor-pointer w-full rounded-lg bg-white py-3 font-semibold text-black hover:bg-gray-100 transition"
           >
             Sign up
           </button>
@@ -111,7 +111,7 @@ export default function RegisterPage() {
 
         {/* Google sign up */}
         <div className="text-center">
-          <button className="w-full flex items-center justify-center gap-2 rounded-lg bg-gray-800/80 py-3 text-gray-200 font-semibold hover:bg-gray-700 transition">
+          <button className="cursor-pointer w-full flex items-center justify-center gap-2 rounded-lg bg-gray-800/80 py-3 text-gray-200 font-semibold hover:bg-gray-700 transition">
             <LogIn size={20} />
             Sign up with Google
           </button>

@@ -6,13 +6,13 @@ import axiosInstance from "@/lib/axiosInstance";
 import Link from "next/link";
 
 const navItems = [
-  { name: "Dashboard", href: "/", icon: Home },
-  { name: "All Tasks", href: "/tasks", icon: ListTodo },
-  { name: "Calendar", href: "/calendar", icon: Calendar },
+  { name: "Dashboard", href: "/index", icon: Home },
+  // { name: "All Tasks", href: "/tasks", icon: ListTodo },
+  // { name: "Calendar", href: "/calendar", icon: Calendar },
 ];
 
 const bottomItems = [
-  { name: "Cài đặt", href: "/settings", icon: Settings },
+  { name: "Cài đặt", href: "#", icon: Settings },
 ];
 
 interface SidebarProps {
@@ -106,7 +106,7 @@ export const Sidebar = ({ onClose }: SidebarProps) => {
 
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-red-400 hover:bg-red-500/10 hover:text-red-500 transition-all mt-2"
+          className="cursor-pointer flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-red-400 hover:bg-red-500/10 hover:text-red-500 transition-all mt-2"
         >
           <LogOut size={18} />
           <span>Đăng xuất</span>
