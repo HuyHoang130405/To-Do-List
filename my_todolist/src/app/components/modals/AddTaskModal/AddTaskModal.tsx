@@ -57,42 +57,38 @@ export const AddTaskModal = ({
   }, []);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
-      if (!title.trim()) {
-        alert("Vui lòng nhập tiêu đề công việc!");
-        return;
-      }
-      if (!start || !end) {
-        alert("Vui lòng chọn thời gian bắt đầu và kết thúc!");
-        return;
-      }
-      if (end <= start) {
-        alert("Thời gian kết thúc phải sau thời gian bắt đầu!");
-        return;
-      }
 
-      onAddTask({
-        title,
-        description,
-        priority,
-        start,
-        end,
-        subtasks,
-      });
+      if (!title.trim()) return toast.error("Vui lòng nhập tiêu đề!");
+      if (!start || !end) return toast.error("Vui lòng chọn thời gian!");
+      if (end <= start) return toast.error("Thời gian kết thúc phải sau thời gian bắt đầu!");
 
-      toast.success("🎉 Đã thêm công việc thành công!", {
-        duration: 3000,
-      });
+      try {
+        await onAddTask({
+          title,
+          description,
+          priority,
+          start,
+          end,
+          subtasks,
+        });
 
-      setTitle("");
-      setStart(new Date());
-      setEnd(new Date(Date.now() + 60 * 60 * 1000));
-      setDescription("");
-      setPriority("medium");
-      setSubtasks([]);
-      setNewSubtask("");
-      onClose();
+        toast.success("🎉 Đã thêm công việc thành công!");
+
+        // Reset form
+        setTitle("");
+        setStart(new Date());
+        setEnd(new Date(Date.now() + 60 * 60 * 1000));
+        setDescription("");
+        setPriority("medium");
+        setSubtasks([]);
+        setNewSubtask("");
+
+        onClose();
+      } catch (err: any) {
+        toast.error(err?.response?.data?.message || "Thêm công việc thất bại!");
+      }
     },
     [title, description, priority, start, end, subtasks, onAddTask, onClose]
   );

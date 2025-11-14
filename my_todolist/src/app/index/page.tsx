@@ -23,7 +23,8 @@ export default function HomePage() {
       setIsModalOpen(false);
       fetchTasks();
     } catch (err: any) {
-      alert(err?.response?.data?.message || "Thêm task thất bại!");
+      // alert(err?.response?.data?.message || "Thêm task thất bại!");
+      throw err;
     }
   };
 
