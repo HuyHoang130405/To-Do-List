@@ -7,6 +7,7 @@ import { EditTaskModal } from "../../modals/EditTaskModal/EditTaskModal";
 import { deleteTask, updateTask } from "@/services/taskService";
 import { ConfirmModal } from "../../common/ConfirmModal";
 import { ConfettiEffect } from '../../common/ConfettiEffect';
+import { useRef } from "react";
 
 interface TaskCardProps {
   _id: string;
@@ -73,10 +74,17 @@ export const TaskCard = ({
 
   // Tính phần trăm hoàn thành
   const completedCount = subTaskList.filter((s) => s.done).length;
-  const progress =
-    subTaskList.length > 0
-      ? Math.round((completedCount / subTaskList.length) * 100)
-      : 0;
+  const progress = subTaskList.length > 0 ? Math.round((completedCount / subTaskList.length) * 100) : 0;
+
+  const prevProgress = useRef(progress);
+  useEffect(() => {
+    if (prevProgress.current < 100 && progress === 100) {
+      setCelebrated(true);
+    } else if (progress < 100) {
+      setCelebrated(false);
+    }
+    prevProgress.current = progress;
+  }, [progress]);
 
   const handleToggleSubTask = async (id: string) => {
     const updatedList = subTaskList.map((s) =>
@@ -100,12 +108,7 @@ export const TaskCard = ({
     }
   };
 
-  const priorityColor =
-    taskPriority === "high"
-      ? "text-red-400"
-      : taskPriority === "medium"
-      ? "text-yellow-400"
-      : "text-green-400";
+  const priorityColor = taskPriority === "high" ? "text-red-400" : taskPriority === "medium" ? "text-yellow-400" : "text-green-400";
 
   return (
     <div
@@ -114,7 +117,7 @@ export const TaskCard = ({
       h-auto`}
     >
       {/* Confetti hiệu ứng hoàn thành */}
-      <ConfettiEffect trigger={progress === 100 && !celebrated} />
+      <ConfettiEffect trigger={celebrated} />
 
       {/* Header */}
       <div className="flex justify-between items-start">
@@ -165,9 +168,8 @@ export const TaskCard = ({
                 className="accent-purple-500 w-4 h-4"
               />
               <span
-                className={`text-sm ${
-                  sub.done ? "line-through text-gray-500" : "text-white"
-                }`}
+                className={`text-sm ${sub.done ? "line-through text-gray-500" : "text-white"
+                  }`}
               >
                 {sub.text}
               </span>
