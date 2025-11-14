@@ -33,8 +33,9 @@ export default function HomePage() {
 
       {/* Overlay chỉ làm mờ nội dung, không che sidebar */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden z-30 ${isSidebarOpen ? "opacity-0 visible" : "opacity-0 invisible"
-          }`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 lg:hidden 
+    ${isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+  `}
         onClick={() => setIsSidebarOpen(false)}
       />
 
