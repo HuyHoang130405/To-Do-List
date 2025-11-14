@@ -43,7 +43,7 @@ export const ParticlesBackground = () => {
           outModes: { default: "bounce" },
         },
         number: {
-          value: 20,
+          value: 10,
           density: {
             enable: true,
             width: 800,

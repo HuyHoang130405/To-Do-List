@@ -15,13 +15,19 @@ import { TaskPayload } from "@/types/task";
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { tasks, loading, error, fetchTasks } = useTasks();
+  const { tasks, loading, error, fetchTasks, setTasks } = useTasks();
 
   const handleAddTask = async (taskData: TaskPayload) => {
     try {
-      await createTask(taskData);
+      const res = await createTask(taskData);
+      const newTask = {
+        ...res.data,
+        start: res.data.startTime ? new Date(res.data.startTime) : null,
+        end: res.data.endTime ? new Date(res.data.endTime) : null,
+      };
+      setTasks(prev => [newTask, ...prev]);
       setIsModalOpen(false);
-      fetchTasks();
+      // fetchTasks();
     } catch (err: any) {
       // alert(err?.response?.data?.message || "Thêm task thất bại!");
       throw err;
