@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { Pencil, Trash2 } from "lucide-react";
-import Confetti from "react-confetti";
 import { SubTask, TaskPayload } from "@/types/task";
 import { EditTaskModal } from "../../modals/EditTaskModal/EditTaskModal";
 import { deleteTask, updateTask } from "@/services/taskService";
 import { ConfirmModal } from "../../common/ConfirmModal";
+import { ConfettiEffect } from '../../common/ConfettiEffect';
 
 interface TaskCardProps {
   _id: string;
@@ -38,8 +38,6 @@ export const TaskCard = ({
   const [taskStart, setTaskStart] = useState(startTime ?? null);
   const [taskEnd, setTaskEnd] = useState(endTime ?? null);
   const [subTaskList, setSubTaskList] = useState(subtasks);
-
-  const [showConfetti, setShowConfetti] = useState(false);
   const [celebrated, setCelebrated] = useState(false); // NEW: nhớ đã ăn mừng hay chưa
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -80,20 +78,6 @@ export const TaskCard = ({
       ? Math.round((completedCount / subTaskList.length) * 100)
       : 0;
 
-  // Hiệu ứng pháo hoa khi hoàn thành (1 lần duy nhất mỗi lần complete)
-  useEffect(() => {
-    if (!celebrated && progress === 100 && subTaskList.length > 0) {
-      setShowConfetti(true);
-      setCelebrated(true); // đánh dấu đã ăn mừng
-      setTimeout(() => setShowConfetti(false), 3000);
-    }
-
-    // Reset nếu chưa hoàn thành nữa → cho phép ăn mừng lại
-    if (progress < 100 && celebrated) {
-      setCelebrated(false);
-    }
-  }, [progress, subTaskList.length, celebrated]);
-
   const handleToggleSubTask = async (id: string) => {
     const updatedList = subTaskList.map((s) =>
       s._id === id ? { ...s, done: !s.done } : s
@@ -130,18 +114,7 @@ export const TaskCard = ({
       h-auto`}
     >
       {/* Confetti hiệu ứng hoàn thành */}
-      {showConfetti && (
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-50">
-          <Confetti
-            width={window.innerWidth}
-            height={window.innerHeight}
-            numberOfPieces={200}
-            gravity={0.3}
-            wind={0.01}
-            recycle={false}
-          />
-        </div>
-      )}
+      <ConfettiEffect trigger={progress === 100 && !celebrated} />
 
       {/* Header */}
       <div className="flex justify-between items-start">
