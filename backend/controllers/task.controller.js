@@ -21,7 +21,7 @@ const getTasks = async (req, res, next) => {
       return res.status(401).json({ message: "Người dùng chưa được xác thực" });
     }
 
-    const tasks = await Task.find({ user: req.user.id });
+    const tasks = await Task.find({ user: req.user.id }).sort({createdAt: -1});
     res.json({ success: true, tasks });
   } catch (error) {
     next(error);
