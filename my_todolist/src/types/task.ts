@@ -14,6 +14,8 @@ export interface Task {
     end: Date | null;
     subtasks: SubTask[];
     // ...các trường khác nếu có
+    // createdAt: Date;
+    // updatedAt: Date; 
 }
 
 export interface TaskPayload {

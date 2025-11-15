@@ -5,7 +5,7 @@ import { PlusCircle, Menu } from "lucide-react";
 import { Sidebar } from "../components/layout/Sidebar";
 import { Header } from "../components/layout/Header";
 import { TaskCard } from "../components/index/Tasks/TaskCard";
-import { ActivityWidget } from "../components/index/Widgets/ActivityWidget";
+// import { ActivityWidget } from "../components/index/Widgets/ActivityWidget";
 import { ParticlesBackground } from "../components/index/Particles/ParticlesBackground";
 import { AddTaskModal } from "../components/modals/AddTaskModal/AddTaskModal";
 import { useTasks } from "@/hooks/useTasks";
@@ -90,7 +90,7 @@ export default function HomePage() {
             </div>
 
             {/* Grid chính */}
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
               {/* Task List */}
               <section className="xl:col-span-3">
                 <div className="space-y-4 max-h-[calc(100vh-15rem)] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-white/20">
@@ -104,7 +104,7 @@ export default function HomePage() {
                       <p>Bắt đầu ngày mới hiệu quả!</p>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                       {tasks.map((task) => (
                         <TaskCard
                           key={task._id}
@@ -125,19 +125,19 @@ export default function HomePage() {
               </section>
 
               {/* Desktop Widgets */}
-              <aside className="hidden xl:flex xl:col-span-1 flex-col gap-6">
+              {/* <aside className="hidden xl:flex xl:col-span-1 flex-col gap-6">
                 <div className="p-5 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
                   <h3 className="font-semibold text-white mb-2">Ghi chú hôm nay</h3>
                   <p className="text-sm text-gray-300">
                     Planning meetings for the week
                   </p>
                 </div>
-                <ActivityWidget />
-              </aside>
+                <ActivityWidget tasks={tasks}/>
+              </aside> */}
             </div>
 
             {/* Mobile Widget Toggle */}
-            <div className="xl:hidden">
+            {/* <div className="xl:hidden">
               <details className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden">
                 <summary className="p-4 font-semibold text-white cursor-pointer flex justify-between items-center hover:bg-white/5 transition">
                   Hoạt động & Ghi chú
@@ -152,10 +152,10 @@ export default function HomePage() {
                       Planning meetings for the week
                     </p>
                   </div>
-                  <ActivityWidget />
+                  <ActivityWidget tasks={tasks}/>
                 </div>
               </details>
-            </div>
+            </div> */}
           </main>
         </div>
       </div>
