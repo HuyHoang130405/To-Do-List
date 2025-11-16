@@ -40,7 +40,7 @@ export const ParticlesBackground = () => {
         move: {
           enable: true,
           speed: 0.8,
-          outModes: { default: "bounce" },
+          // outModes: "bounce",
         },
         number: {
           value: 10,
