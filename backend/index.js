@@ -15,6 +15,8 @@ app.use(cors({
         "https://to-do-list-seven-gamma-80.vercel.app"
     ], // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức được phép
+    allowedHeaders: ['Content-Type', 'Authorization'] // Các header được phép
 }));
 // Middleware
 app.use(express.json());
