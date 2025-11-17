@@ -12,9 +12,10 @@ const app = express();
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "https://to-do-list-seven-gamma-80.vercel.app/"
+        "https://to-do-list-seven-gamma-80.vercel.app"
     ], // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
+    exposedHeaders: ["set-cookie"]
 }));
 // Middleware
 app.use(express.json());
