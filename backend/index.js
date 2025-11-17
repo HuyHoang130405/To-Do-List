@@ -10,7 +10,10 @@ connectDB();
 const app = express();
 // Thêm cấu hình CORS
 app.use(cors({
-    origin: "http://localhost:3000", // Cho phép frontend truy cập
+    origin: [
+        "http://localhost:3000",
+        "https://todolist-nn6w.onrender.com"
+    ], // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
 }));
 // Middleware
