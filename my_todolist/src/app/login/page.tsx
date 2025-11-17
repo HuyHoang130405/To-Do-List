@@ -34,7 +34,7 @@ export default function LoginPage() {
       });
 
       // Chuyển hướng sau 1.2s
-      setTimeout(() => router.push("/index"), 1200);
+      setTimeout(() => router.push("/home"), 1200);
     } catch (err: any) {
       // Xử lý lỗi đăng nhập ở đây nếu cần
       toast.error(err?.response?.data?.message || "Login failed", {

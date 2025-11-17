@@ -19,7 +19,7 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center px-6 py-36 relative z-10">
-        <Link href="/index" className="cursor-pointer mb-5 inline-flex 
+        <Link href="/home" className="cursor-pointer mb-5 inline-flex 
         items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r 
         from-indigo-500/80 to-cyan-400/80 text-white font-semibold 
         shadow-lg sm:text-lg animate-bounce">
