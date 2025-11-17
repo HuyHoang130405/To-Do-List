@@ -1,23 +1,40 @@
+// index.js
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 dotenv.config();
 connectDB();
 
 const app = express();
-// Thêm cấu hình CORS
-app.use(cors({
-    origin: [
+
+// Middleware CORS chuẩn cho frontend và preflight requests
+app.use((req, res, next) => {
+    const allowedOrigins = [
         "http://localhost:3000",
+        "https://huyhoang-todolist.vercel.app",
         "https://to-do-list-seven-gamma-80.vercel.app"
-    ], // Cho phép frontend truy cập
-    credentials: true, // Cho phép gửi cookie
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức được phép
-    allowedHeaders: ['Content-Type', 'Authorization'] // Các header được phép
-}));
+    ];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header("Access-Control-Allow-Origin", origin);
+    }
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
+    );
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Content-Type,Authorization"
+    );
+
+    // Nếu là preflight request thì trả luôn 200
+    if (req.method === "OPTIONS") return res.sendStatus(200);
+    next();
+});
+
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
@@ -25,7 +42,6 @@ app.use(cookieParser());
 // Routes
 app.use("/api/users", require("./routes/user"));
 app.use("/api/tasks", require("./routes/task"));
-
 
 // Error handler middleware
 const errorHandler = require("./middlewares/error.middleware");
