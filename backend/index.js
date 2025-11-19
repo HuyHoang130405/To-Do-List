@@ -11,13 +11,8 @@ const app = express();
 app.set("trust proxy", 1);
 // Thêm cấu hình CORS
 app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "https://huyhoang-todolist.vercel.app"
-    ], // Cho phép frontend truy cập
+    origin: "https://huyhoang-todolist.vercel.app", // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức được phép
-    allowedHeaders: ["*"] // Các header được phép
 }));
 // Middleware
 app.use(express.json());
