@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({
     origin: [
         "http://localhost:3000",
-        "https://to-do-list-seven-gamma-80.vercel.app"
+        "https://huyhoang-todolist.vercel.app"
     ], // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức được phép
