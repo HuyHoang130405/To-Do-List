@@ -8,6 +8,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
+app.set("trust proxy", 1);
 // Thêm cấu hình CORS
 app.use(cors({
     origin: [
@@ -16,7 +17,7 @@ app.use(cors({
     ], // Cho phép frontend truy cập
     credentials: true, // Cho phép gửi cookie
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Các phương thức được phép
-    allowedHeaders: ['Content-Type', 'Authorization'] // Các header được phép
+    allowedHeaders: ["*"] // Các header được phép
 }));
 // Middleware
 app.use(express.json());
