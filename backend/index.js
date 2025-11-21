@@ -12,8 +12,14 @@ app.set("trust proxy", 1);
 // Thêm cấu hình CORS
 app.use(cors({
     origin: "https://huyhoang-todolist.vercel.app", // Cho phép frontend truy cập
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true, // Cho phép gửi cookie
 }));
+app.options("*", cors({
+    origin: "https://huyhoang-todolist.vercel.app",
+    credentials: true
+})); // <- BẮT BUỘC CHO CHROME MOBILE
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
